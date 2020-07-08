@@ -1,0 +1,443 @@
+SQL> ed ex20.sql
+
+SQL> @ex20.sql
+
+테이블이 생성되었습니다.
+
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex21 values (1,'영업');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex21 values (2,'회계');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex21 values (3,'생산');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex21;
+
+       NUM JOB                                                                  
+---------- ------------------------------                                       
+         1 영업                                                                 
+         2 회계                                                                 
+         3 생산                                                                 
+
+SQL> insert into ex20 values (1111,'user1',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values (2222,'user2',2);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values (3333,'user3',3);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values (4444,'new1',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex20;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 user1                                   1                            
+      2222 user2                                   2                            
+      3333 user3                                   3                            
+      4444 new1                                    1                            
+
+SQL> select sabun,name,decode(num,1,'영업',2,'회계',3,'생산') from ex20;
+
+     SABUN NAME                           DECODE(NUM,1                          
+---------- ------------------------------ ------------                          
+      1111 user1                          영업                                  
+      2222 user2                          회계                                  
+      3333 user3                          생산                                  
+      4444 new1                           영업                                  
+
+SQL> insert into ex20 values (5555,'new2',4);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> ed ex20
+
+SQL> drop table ex20;
+
+테이블이 삭제되었습니다.
+
+SQL> desc ex20;
+ERROR:
+ORA-04043: ex20 객체는 존재하지 않습니다. 
+
+
+SQL> drop ex21;
+drop ex21
+     *
+1행에 오류:
+ORA-00950: DROP 옵션이 부적합합니다 
+
+
+SQL> drop table ex21;
+
+테이블이 삭제되었습니다.
+
+SQL> @ex20.sql
+	num number references ex21(num)
+	                      *
+4행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+
+테이블이 생성되었습니다.
+
+SQL> drop table 21;
+drop table 21
+           *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다 
+
+
+SQL> drop table ex21;
+
+테이블이 삭제되었습니다.
+
+SQL> ed ex20
+
+SQL> @ex20.sql
+
+테이블이 생성되었습니다.
+
+
+테이블이 생성되었습니다.
+
+SQL> drop table ex21;
+drop table ex21
+           *
+1행에 오류:
+ORA-02449: 외래 키에 의해 참조되는 고유/기본 키가 테이블에 있습니다 
+
+
+SQL> drop table ex20;
+
+테이블이 삭제되었습니다.
+
+SQL> drop table ex21;
+
+테이블이 삭제되었습니다.
+
+SQL> @ex20.sql;
+
+테이블이 생성되었습니다.
+
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex20 values(1111,'test1',1);
+insert into ex20 values(1111,'test1',1)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.SYS_C004028)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> insert into ex21 values(1,'영업');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex21 values(2,'회계');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex21 values(3,'생산');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(1111,'user1',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(2222,'user2',2);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(3333,'user3',3);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(4444,'user4',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(5555,'user5',5);
+insert into ex20 values(5555,'user5',5)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.SYS_C004028)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> select * from ex20;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 user1                                   1                            
+      2222 user2                                   2                            
+      3333 user3                                   3                            
+      4444 user4                                   1                            
+
+SQL> select * from ex21;
+
+       NUM JOB                                                                  
+---------- ------------------------------                                       
+         1 영업                                                                 
+         2 회계                                                                 
+         3 생산                                                                 
+
+SQL> insert into ex21 values(4,'총무');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(5555,'user5',4);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex20;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 user1                                   1                            
+      2222 user2                                   2                            
+      3333 user3                                   3                            
+      4444 user4                                   1                            
+      5555 user5                                   4                            
+
+SQL> ed ex20
+
+SQL> @ex20.sql;
+
+테이블이 삭제되었습니다.
+
+
+테이블이 삭제되었습니다.
+
+
+테이블이 생성되었습니다.
+
+
+테이블이 생성되었습니다.
+
+SQL> desc ex20;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                     NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+ NUM                                                NUMBER
+
+SQL> desc ex21;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ JOB                                       NOT NULL VARCHAR2(15)
+
+SQL> ed ex20
+
+SQL> desc ex21;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ JOB                                       NOT NULL VARCHAR2(15)
+
+SQL> desc ex20;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                     NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+ NUM                                                NUMBER
+
+SQL> select * from ex21;
+
+선택된 레코드가 없습니다.
+
+SQL> select * from ex20;
+
+선택된 레코드가 없습니다.
+
+SQL> insert into ex20 values(1111,'test1',1);
+insert into ex20 values(1111,'test1',1)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.EX20_NUM_FK)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> insert into ex21 values(1,'영업');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex21 values(2,'회계');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(1111,'test1',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(2222,'test2',2);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex20 values(6666,'new2',5);
+insert into ex20 values(6666,'new2',5)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.EX20_NUM_FK)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> insert into ex20 values(6666,'new2',5);
+insert into ex20 values(6666,'new2',5)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.EX20_NUM_FK)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> alter table ex20 disable constraint SCOTT.EX20_NUM_FK;
+alter table ex20 disable constraint SCOTT.EX20_NUM_FK
+                                         *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다 
+
+
+SQL> insert into ex20 values(6666,'new2',5);
+insert into ex20 values(6666,'new2',5)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.EX20_NUM_FK)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> insert into ex20 values(6666,'new2',4);
+insert into ex20 values(6666,'new2',4)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.EX20_NUM_FK)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> insert into ex20 values(6666,'new2',6);
+insert into ex20 values(6666,'new2',6)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.EX20_NUM_FK)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> alter table ex20 disable constraint EX20_NUM_FK;
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex20 values(6666,'new2',6);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> alter table ex20 enable constraint EX20_NUM_FK;
+alter table ex20 enable constraint EX20_NUM_FK
+                                   *
+1행에 오류:
+ORA-02298: 제약 (SCOTT.EX20_NUM_FK)을 사용 가능하게 할 수 없음 - 부모 키가
+없습니다 
+
+
+SQL> alter table ex20 enable constraint EX20_NUM_FK;
+alter table ex20 enable constraint EX20_NUM_FK
+                                   *
+1행에 오류:
+ORA-02298: 제약 (SCOTT.EX20_NUM_FK)을 사용 가능하게 할 수 없음 - 부모 키가
+없습니다 
+
+
+SQL> insert into ex21 values(6,'관리');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> alter table ex20 enable constraint EX20_NUM_FK;
+
+테이블이 변경되었습니다.
+
+SQL> select * from ex21;
+
+       NUM JOB                                                                  
+---------- ------------------------------                                       
+         1 영업                                                                 
+         2 회계                                                                 
+         6 관리                                                                 
+
+SQL> select * from ex20;
+
+     SABUN NAME                                  NUM                            
+---------- ------------------------------ ----------                            
+      1111 test1                                   1                            
+      2222 test2                                   2                            
+      6666 new2                                    6                            
+
+SQL> ed ex22.sql
+
+SQL> @ex22.sql
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex22 values(1111,'user1','M');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex22 values(2222,'user2','F');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex22 values (3333,'user3','m');
+insert into ex22 values (3333,'user3','m')
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SCOTT.SYS_C004035)이 위배되었습니다 
+
+
+SQL> ed ex22
+
+SQL> @ex22.sql
+
+테이블이 삭제되었습니다.
+
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex22 values(1111,'user1','M',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex22 values(2222,'user2','F',120);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex22 values(3333,'user3','F',0);
+insert into ex22 values(3333,'user3','F',0)
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SCOTT.SYS_C004039)이 위배되었습니다 
+
+
+SQL> insert into ex22 values(3333,'user3','F',121);
+insert into ex22 values(3333,'user3','F',121)
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SCOTT.SYS_C004039)이 위배되었습니다 
+
+
+SQL> spool off

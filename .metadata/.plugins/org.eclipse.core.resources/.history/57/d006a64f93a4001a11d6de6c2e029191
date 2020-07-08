@@ -1,0 +1,63 @@
+package com.bit.day20;
+
+class Ball{
+	String color="검은색";
+	
+	void play(){
+		System.out.print(color+"공이 굴러갑니다.");
+	}
+	
+}
+
+class BaseBall extends Ball{
+	String color="흰색";
+
+	void play(){
+		System.out.print("던지고 놀수도 있습니다.");
+	}
+}
+
+class Bowling extends Ball{
+	String color="주황색";
+}
+
+class Box{
+	private BaseBall myBall;
+	
+	void push(BaseBall myBall){
+		this.myBall = myBall;
+	}
+	
+	BaseBall pull(){
+		return myBall;
+	}
+}
+
+
+
+public class Ex08 {
+
+	public static void main(String[] args) {
+		BaseBall ball1=new BaseBall();
+		Box box=new Box();
+		box.push(ball1);
+		
+		BaseBall ball2=box.pull();
+		ball2.play();
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

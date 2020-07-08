@@ -1,0 +1,22 @@
+package com.bit.day20;
+class Lec13{
+	
+	void func(){
+		System.out.println("기능사용");
+	}
+}
+
+class Template{
+	static Lec13 newInstance(){
+		Lec13 lec=new Lec13();
+		return lec;
+	}
+}
+public class Ex13 {
+
+	public static void main(String[] args) {
+		Lec13 lec =new Lec13();
+		lec.func();
+	}
+
+}

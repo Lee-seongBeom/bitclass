@@ -1,0 +1,33 @@
+package com.bit.day20;
+
+import java.util.*;
+
+public class Ex03 {
+
+	public static void main(String[] args) {
+		HashSet set01= new HashSet();
+		
+		set01.add("첫번째");
+		set01.add("두번째");
+		set01.add("세번째");
+		set01.add("네번째");
+		set01.add("번째");
+		
+		System.out.println(set01.size());
+		
+		Iterator ite =set01.iterator();
+		for(int i=0;i<set01.size();i++){
+			System.out.println(ite.next());
+		}
+//		
+//		
+//		System.out.println(ite.next());
+//		System.out.println(ite.next());
+//		System.out.println(ite.next());
+//		System.out.println(ite.next());
+//		System.out.println(ite.next());
+//		
+		
+	}
+
+}

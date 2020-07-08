@@ -1,0 +1,344 @@
+SQL> create table ex13(
+  2  sabun number(4),
+  3  name varchar2(15),
+  4  nalja date
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex13 values (1111,'test1',sysdate);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex13 values (2222,'test2','2020/01/01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+
+SQL> desc ex13
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                              NUMBER(4)
+ NAME                                               VARCHAR2(15)
+ NALJA                                              DATE
+
+SQL> desc ex13;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                              NUMBER(4)
+ NAME                                               VARCHAR2(15)
+ NALJA                                              DATE
+
+SQL> insert into ex13 (sabun,name,nalja) values (3333,'test3',sysdate);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+
+SQL> insert into ex13 (name,nalja,sabun) values ('test4',sysdate,4444);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+
+SQL> insert into ex13 (sabun,name) values (5555,'test5');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+
+SQL> insert into ex13 values (6666,null,sysdate);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+
+6 개의 행이 선택되었습니다.
+
+SQL> insert into ex13 values (7777,'',sysdate);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+
+7 개의 행이 선택되었습니다.
+
+SQL> select * from ex13 where name is null;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+
+SQL> insert into ex13 values('','','');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13 where name is null;\
+  2  ;
+select * from ex13 where name is null;\
+                                     *
+1행에 오류:
+ORA-00911: 문자가 부적합합니다 
+
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+                                                                                
+
+8 개의 행이 선택되었습니다.
+
+SQL> select * from ex13 where sabun is null;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+                                                                                
+
+SQL> insert into ex13 values ('8888','test8','88/08/08');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+                                                                                
+      8888 test8                          88/08/08                              
+
+9 개의 행이 선택되었습니다.
+
+SQL> insert into ex13 values (9999,'1234',sysdate);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+                                                                                
+      8888 test8                          88/08/08                              
+      9999 1234                           20/06/24                              
+
+10 개의 행이 선택되었습니다.
+
+SQL> select name+1 from ex13 where sabun=9999;
+
+    NAME+1                                                                      
+----------                                                                      
+      1235                                                                      
+
+SQL> update ex13 set name='test9',nalja=sysdate from where sabun=9999;
+update ex13 set name='test9',nalja=sysdate from where sabun=9999
+                                           *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다 
+
+
+SQL> update ex13 set name='1234',nalja=sysdate from where sabun=9999;
+update ex13 set name='1234',nalja=sysdate from where sabun=9999
+                                          *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다 
+
+
+SQL> update ex13 set name='1234',nalja=sysdate from where sabun=9999;
+update ex13 set name='1234',nalja=sysdate from where sabun=9999
+                                          *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다 
+
+
+SQL> update ex13 set name='8888',nalja=sysdate from where sabun=9999;
+update ex13 set name='8888',nalja=sysdate from where sabun=9999
+                                          *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다 
+
+
+SQL> update ex13 set name='test8',nalja=sysdate from where sabun=9999;
+update ex13 set name='test8',nalja=sysdate from where sabun=9999
+                                           *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다 
+
+
+SQL> update ex13 set name='1234',nalja=sysdate where sabun=9999;
+
+1 행이 갱신되었습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+                                                                                
+      8888 test8                          88/08/08                              
+      9999 1234                           20/06/24                              
+
+10 개의 행이 선택되었습니다.
+
+SQL> update ex13 set name='test9' where sabun=9999;
+
+1 행이 갱신되었습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666                                20/06/24                              
+      7777                                20/06/24                              
+                                                                                
+      8888 test8                          88/08/08                              
+      9999 test9                          20/06/24                              
+
+10 개의 행이 선택되었습니다.
+
+SQL> update ex13 set name='이름없음' where name is null;
+
+3 행이 갱신되었습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666 이름없음                       20/06/24                              
+      7777 이름없음                       20/06/24                              
+           이름없음                                                             
+      8888 test8                          88/08/08                              
+      9999 test9                          20/06/24                              
+
+10 개의 행이 선택되었습니다.
+
+SQL> delete from ex13 where sabun is null;
+
+1 행이 삭제되었습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+      4444 test4                          20/06/24                              
+      5555 test5                                                                
+      6666 이름없음                       20/06/24                              
+      7777 이름없음                       20/06/24                              
+      8888 test8                          88/08/08                              
+      9999 test9                          20/06/24                              
+
+9 개의 행이 선택되었습니다.
+
+SQL> delete from ex13 where saban in (4444,5555,6666,7777,8888,9999);
+delete from ex13 where saban in (4444,5555,6666,7777,8888,9999)
+                       *
+1행에 오류:
+ORA-00904: "SABAN": 부적합한 식별자 
+
+
+SQL> delete from ex13 where sabun in (4444,5555,6666,7777,8888,9999);
+
+6 행이 삭제되었습니다.
+
+SQL> select * from ex13;
+
+     SABUN NAME                           NALJA                                 
+---------- ------------------------------ --------                              
+      1111 test1                          20/06/24                              
+      2222 test2                          20/01/01                              
+      3333 test3                          20/06/24                              
+
+SQL> TRUNCATE TABLE ex13;
+
+테이블이 잘렸습니다.
+
+SQL> select * from ex13;
+
+선택된 레코드가 없습니다.
+
+SQL> spool off

@@ -1,0 +1,96 @@
+SQL> ed pl03.sql
+
+SQL> @pl03.sql;
+	select dname,loc into v_row from dept where deptno=10;
+	                            *
+4행에 오류:
+ORA-06550: 줄 4, 열30:PL/SQL: ORA-00913: 값의 수가 너무 많습니다
+ORA-06550: 줄 4, 열2:PL/SQL: SQL Statement ignored 
+
+
+SQL> ed pl03.sql;
+
+SQL> @pl03.sql;
+dname:ACCOUNTING                                                                
+loc:NEW YORK                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl03.sql;
+
+SQL> ed pl04.sql;
+
+SQL> @pl04.sql;
+true~                                                                           
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl04.sql;
+
+SQL> @pl04.sql;
+true~                                                                           
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl04.sql;
+
+SQL> @pl04.sql;
+false~~~                                                                        
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl04.sql;
+
+SQL> @pl04.sql;
+a<0                                                                             
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl04.sql;
+
+SQL> @pl04.sql;
+a=0                                                                             
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl04.sql;
+
+SQL> @pl04.sql;
+a>0                                                                             
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl04.sql;
+
+SQL> ed pl05.sql;
+
+SQL> @pl05.sql;
+end;
+   *
+16행에 오류:
+ORA-06550: 줄 16, 열4:PLS-00103: 심볼 ";"를 만났습니다 다음 중 하나가 기대될
+때: 
+if 
+
+
+SQL> ed pl05.sql;
+
+SQL> @pl05.sql;
+end;
+   *
+17행에 오류:
+ORA-06550: 줄 17, 열4:PLS-00103: 심볼 ";"를 만났습니다 다음 중 하나가 기대될
+때: 
+if 
+
+
+SQL> ed pl05.sql;
+
+SQL> @pl05.sql;
+그만 두는게..                                                                   
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl05.sql;
+
+SQL> spool off

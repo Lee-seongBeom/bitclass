@@ -1,0 +1,30 @@
+package com.bit.day20;
+
+class Lec11<T>{
+	T obj;
+	
+	void setObj(T obj){
+		this.obj = obj;
+	}
+	
+	T getObj(){
+		return obj;
+	}
+}
+
+
+public class Ex11 {
+
+	public static void main(String[] args) {
+		// <?> -> 와일드 타입 ( 여기에 대해 타입을 결정을 아직 안함)
+		Lec11<Number> lec1 =new Lec11<>();
+//		Lec11<String> lec2 =(Lec11<String>) lec1;
+		
+		
+		lec1.setObj(123.4);
+//		String msg =lec1.getObj();
+		System.out.println(lec1.getObj());
+		
+	}
+
+}

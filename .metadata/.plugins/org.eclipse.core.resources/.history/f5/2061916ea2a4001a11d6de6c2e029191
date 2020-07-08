@@ -1,0 +1,41 @@
+package com.bit.day20;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Lec11<T>{
+	T obj;
+	
+	void setObj(T obj){
+		this.obj = obj;
+	}
+	
+	T getObj(){
+		return obj;
+	}
+	
+	void func(List<? extends Number> list){
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i));
+		}
+	}
+}
+
+
+public class Ex11 {
+
+	public static void main(String[] args) {
+		
+		ArrayList<String> list =new ArrayList<>();
+		list.add("abc");
+		list.add("defg");
+		
+		Lec11 lec=new Lec11();
+		lec.func(list);
+
+		
+		// Lec11<?> -> 와일드 타입 ( 여기에 대해 타입을 결정을 아직 안함)
+		// <?(자식) super Number(부모)>  =>>  Number 기준 위로 (Number 아래에있는 Integer나 double 같은것)
+		// <? extends Number> =>>  Number 기준 아래로 (Number 위에있는)
+	}
+}

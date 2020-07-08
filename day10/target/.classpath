@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="day09/|day07/|day10/src/|day09/src/|day10/src/com/bit/day10/|day08/|day06/|day01_05/|day11/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="day01_05"/>
+	<classpathentry kind="src" path="day06"/>
+	<classpathentry kind="src" path="day07"/>
+	<classpathentry kind="src" path="day08"/>
+	<classpathentry excluding="src/" kind="src" path="day09"/>
+	<classpathentry kind="src" path="day09/src"/>
+	<classpathentry excluding="com/bit/day10/" kind="src" path="day10/src"/>
+	<classpathentry kind="src" path="day10/src/com/bit/day10"/>
+	<classpathentry kind="src" path="day11/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="day10/target"/>
+</classpath>

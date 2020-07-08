@@ -1,0 +1,201 @@
+SQL> ed ex19.sql
+
+SQL> @ex19.sql
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex19 values (1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex19 values (2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex19 values (null,'test3');
+insert into ex19 values (null,'test3')
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX19"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into ex19 values (1,'test3');
+insert into ex19 values (1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.EX19_NUM_PK)에 위배됩니다 
+
+
+SQL> ed ex19;
+
+SQL> alter table ex19 drop (constraint ex19_num_pk);
+alter table ex19 drop (constraint ex19_num_pk)
+                                  *
+1행에 오류:
+ORA-00907: 누락된 우괄호 
+
+
+SQL> alter table ex19 drop constraint ex19_num_pk;
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex19 values (1,'test3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex19;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         1 test3                                                                
+
+SQL> drop table ex19;
+
+테이블이 삭제되었습니다.
+
+SQL> ed ex19;
+
+SQL> @ex19.sql
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex19 values (1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex19 values (2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex19 values (1,'test3');
+insert into ex19 values (1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.EX19_NUM_PK)에 위배됩니다 
+
+
+SQL> insert into ex19 values (null,'test3');
+insert into ex19 values (null,'test3')
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX19"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> alter table ex19 drop constaint ex19_num_pk;
+alter table ex19 drop constaint ex19_num_pk
+                      *
+1행에 오류:
+ORA-00905: 누락된 키워드 
+
+
+SQL> alter table ex19 drop constraint ex19_num_pk;
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex19 values (1,'test3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> alter table add constraint ex19_num_pk;
+alter table add constraint ex19_num_pk
+            *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다 
+
+
+SQL> alter table add constraint ex19_num_pk primary key(num);
+alter table add constraint ex19_num_pk primary key(num)
+            *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다 
+
+
+SQL> alter table add constraint ex19_num_pk primary key;
+alter table add constraint ex19_num_pk primary key
+            *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다 
+
+
+SQL> alter table add constraint (ex19_num_pk primary key);
+alter table add constraint (ex19_num_pk primary key)
+            *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다 
+
+
+SQL> alter table ex19 add constraint ex19_num_pk primary key;
+alter table ex19 add constraint ex19_num_pk primary key
+                                                      *
+1행에 오류:
+ORA-00906: 누락된 좌괄호 
+
+
+SQL> alter table ex19 add constraint ex19_num_pk primary key(num);
+alter table ex19 add constraint ex19_num_pk primary key(num)
+                                *
+1행에 오류:
+ORA-02437: (SCOTT.EX19_NUM_PK)을 검증할 수 없습니다 - 잘못된 기본 키입니다 
+
+
+SQL> alter table ex19 add constraint ex19_num_pk primary key(num);
+alter table ex19 add constraint ex19_num_pk primary key(num)
+                                *
+1행에 오류:
+ORA-02437: (SCOTT.EX19_NUM_PK)을 검증할 수 없습니다 - 잘못된 기본 키입니다 
+
+
+SQL> delete from ex19;
+
+3 행이 삭제되었습니다.
+
+SQL> alter table ex19 add constraint ex19_num_pk primary key(num);
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex19 values(1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex19 values(2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex19 values(1,'test3');
+insert into ex19 values(1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.EX19_NUM_PK)에 위배됩니다 
+
+
+SQL> select * from ex19;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+
+SQL> desc ex18;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> insert into ex18 values (1,'test3');
+insert into ex18 values (1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004007)에 위배됩니다 
+
+
+SQL> alter table ex18 drop constraint SYS_C004007;
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex18 values (1,'test3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> spool off

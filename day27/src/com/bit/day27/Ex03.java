@@ -1,0 +1,77 @@
+package com.bit.day27;
+
+import java.io.*;
+import java.net.*;
+
+public class Ex03 {
+
+	public static void main(String[] args) {
+		
+		File file = new File("copy\\7z1900-x64.exe");
+		String path="https://www.7-zip.org/a/7z1900-x64.exe";
+		
+		URL url = null;
+		
+		URLConnection conn =null;
+		InputStream is =null;
+		InputStreamReader isr =null;
+		OutputStream os =null;
+		
+		
+		
+		try {
+			url =new URL(path);
+			conn=url.openConnection();
+			is=conn.getInputStream();
+			os =new FileOutputStream(file);
+			
+//			isr =new InputStreamReader(is);
+			int su=-1;
+			while((su=is.read())!=-1){
+				os.write(su);
+//				System.out.print((char)su);
+			}
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				
+				if(isr!=null)isr.close();
+				if(os!=null)os.close();
+				if(is!=null)is.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

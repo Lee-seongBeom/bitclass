@@ -1,0 +1,35 @@
+package test;
+
+public class Test {
+
+//	public int sum(int a,int b){
+//		return a+b;
+//	}
+	
+//	public String say(){
+//		return "hi";
+//	}
+	
+	public void sum(int a, int b){
+		System.out.println(a+"랑"+b+"의 합은 "+(a+b)+"입니다 .");
+	}
+	
+	public void say(){
+		System.out.println("hello");
+	}
+	
+	public static void main(String args) {
+
+//		Test test = new Test();
+//		System.out.println(test.say());
+//		test.say();
+		
+		if("fool".equals(args)){
+			return;
+		}
+		System.out.println("나의 별명은"+args+"입니다.");
+		
+		
+	}
+
+}

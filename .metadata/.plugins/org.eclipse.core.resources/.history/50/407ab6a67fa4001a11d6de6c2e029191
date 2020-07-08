@@ -1,0 +1,46 @@
+package com.bit.day20;
+
+import java.util.*;
+public class Ex06 {
+
+	public static void main(String[] args) {
+
+		System.out.println("로또 번호 생성기 (ver 0.1.0)");
+		HashSet lotto = new HashSet();
+		Random ran = new Random();
+		while(lotto.size()<6){
+			lotto.add(ran.nextInt(5)+1);
+			
+		}
+		Iterator note = lotto.iterator();
+		while(note.hasNext()){
+			System.out.print(note.next()+" ");
+		}
+		
+		
+		
+//		HashSet set =new HashSet();
+//		int cnt1=1;
+//		while(true){
+//			
+//			int a = (int)(Math.random()*5+1);
+//			set.add(a);
+//			
+//			if(cnt1==45){
+//				break;
+//			}
+//			cnt1++;
+//		}
+//
+//		Iterator ite = set.iterator();
+//		
+//		int cnt2 =0;
+//		while(true){
+//			System.out.println(ite.next());
+//			cnt2++;
+//			if(cnt2==6){
+//				break;
+//			}
+//		}
+	}
+}

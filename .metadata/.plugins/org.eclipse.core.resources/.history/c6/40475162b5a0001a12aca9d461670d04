@@ -1,0 +1,16 @@
+package test;
+
+public class Animal {
+
+	String name;
+	
+	
+	public static void main(String[] args) {
+		Animal cat = new Animal();
+		System.out.println(cat.name);
+		Animal dog = new Animal();
+		
+		Animal horse = new Animal();
+	}
+	
+}

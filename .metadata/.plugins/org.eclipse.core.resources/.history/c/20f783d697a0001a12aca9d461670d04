@@ -1,0 +1,38 @@
+package test;
+
+public class Test15 {
+
+	public static void main(String[] args) {
+		
+		String s1 = "ppPooyY";
+		String s2 = "Pyy";
+		int cnt1=0;
+		int cnt2=0;
+		
+		int p = 0;
+		int y = 0;
+		
+		while(true){
+			
+			if(s1.charAt(cnt1)=='p' || s1.charAt(cnt1)=='P'){
+				p++;
+			}else if(s1.charAt(cnt1)=='y' || s1.charAt(cnt1)=='Y'){
+				y++;
+			}else{
+				
+			}
+			
+			if(cnt1==s1.length()-1){
+				break;
+			}
+			cnt1++;			
+			
+		}
+		System.out.println("p 개수 : "+p);
+		System.out.println("y 개수 : "+y);
+		
+		
+		
+	}
+
+}

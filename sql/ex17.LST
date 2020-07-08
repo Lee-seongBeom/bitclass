@@ -1,0 +1,262 @@
+SQL> create table ex17 (num number unique no null, name varchar2(15) not null);
+create table ex17 (num number unique no null, name varchar2(15) not null)
+                                     *
+1행에 오류:
+ORA-00907: 누락된 우괄호 
+
+
+SQL> create table ex17 (num number unique no null, name varchar2(15) not null);
+create table ex17 (num number unique no null, name varchar2(15) not null)
+                                     *
+1행에 오류:
+ORA-00907: 누락된 우괄호 
+
+
+SQL> create table ex17 (num number unique not null, name varchar2(15) not null);
+
+테이블이 생성되었습니다.
+
+SQL> desc ex17
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> drop table ex17;
+
+테이블이 삭제되었습니다.
+
+SQL> desc ex17
+ERROR:
+ORA-04043: ex17 객체는 존재하지 않습니다. 
+
+
+SQL> create table ex17(
+  2  num number primary key,
+  3  name varchar2(15) not null
+  4  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex17 (num) values (2);
+insert into ex17 (num) values (2)
+*
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX17"."NAME") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into ex17 (name) values ('gkgk');
+insert into ex17 (name) values ('gkgk')
+*
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX17"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> create talbe ex17(
+  2  sd
+  3  
+SQL> create table
+  2  --
+  3  ex17(
+  4  n
+  5  
+SQL> --
+SQL> --
+SQL> creqt
+SP2-0042: 알 수 없는 명령어 "creqt" - 나머지 줄 무시.
+SQL> create
+  2  --
+  3  --
+  4  
+SQL> 
+SQL> ed ex17.sql
+
+SQL> @ex17.sql
+SP2-0310: 파일 "ex17.sql"을 열 수 없습니다.
+SQL> ed ex17.sql
+
+SQL> 
+SQL> @ed ex17.sql
+SP2-0310: 파일 "ed.sql"을 열 수 없습니다.
+SQL> insert into ex17 values(1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex17 values(2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex17 values(1,'test3');
+insert into ex17 values(1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004001)에 위배됩니다 
+
+
+SQL> insert into ex17 values(null,'test3');
+insert into ex17 values(null,'test3')
+                        *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX17"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> desc ex17;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> ed ex17;
+
+SQL> ed ex18;
+
+SQL> @ex18.sql
+	primary key(num)
+	           *
+4행에 오류:
+ORA-00907: 누락된 우괄호 
+
+
+SQL> @ex18.sql
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex18 values (1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex18 values (2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex18 values (1,'test3');
+insert into ex18 values (1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004002)에 위배됩니다 
+
+
+SQL> insert into ex18 values (null,'test3');
+insert into ex18 values (null,'test3')
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX18"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> ed ex18.sql
+
+SQL> alter table ex18 modify (name varchar2(15) not null);
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex18 values (3,null);
+insert into ex18 values (3,null)
+                           *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX18"."NAME") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into ex18 values (3,'test3);
+ERROR:
+ORA-01756: 단일 인용부를 지정해 주십시오 
+
+
+SQL> insert into ex18 values (3,'test3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex18;
+
+       NUM NAME                                                                 
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+
+SQL> ed ex18;
+
+SQL> @ed ex18;
+SP2-0310: 파일 "ed.sql"을 열 수 없습니다.
+SQL> @ed ex18.sql;
+SP2-0310: 파일 "ed.sql"을 열 수 없습니다.
+SQL> @ed ex18.sql
+SP2-0310: 파일 "ed.sql"을 열 수 없습니다.
+SQL> @ex18.sql
+
+테이블이 삭제되었습니다.
+
+
+테이블이 생성되었습니다.
+
+
+테이블이 변경되었습니다.
+
+
+테이블이 변경되었습니다.
+
+SQL> insert into ex18 values(1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex18 values(2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex18 values(null,'test2');
+insert into ex18 values(null,'test2')
+                        *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX18"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into ex18 values(1,'test3');
+insert into ex18 values(1,'test3')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004005)에 위배됩니다 
+
+
+SQL> ed ex18.sql
+
+SQL> ed ex18.sql
+
+SQL> @ex18.sql
+
+테이블이 삭제되었습니다.
+
+
+테이블이 생성되었습니다.
+
+
+테이블이 변경되었습니다.
+
+
+테이블이 변경되었습니다.
+
+SQL> desc ex18;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> insert into ex18 values (1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex18 values (1,'test2');
+insert into ex18 values (1,'test2')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004007)에 위배됩니다 
+
+
+SQL> insert into ex18 values (null,'test2');
+insert into ex18 values (null,'test2')
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."EX18"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> ed ex19.sql
+
+SQL> spool off

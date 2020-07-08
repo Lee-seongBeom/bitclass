@@ -1,0 +1,182 @@
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Helloworld..                                                                    
+12345                                                                           
+1+2+3+4+5=15                                                                    
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Helloworld..                                                                    
+12345                                                                           
+1+2+3+4+5=15                                                                    
+num1=123                                                                        
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.spl
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Helloworld..                                                                    
+12345                                                                           
+1+2+3+4+5=15                                                                    
+num1=123                                                                        
+num2=15                                                                         
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> @pl01.sql
+Helloworld..                                                                    
+12345                                                                           
+1+2+3+4+5=15                                                                    
+num1=123                                                                        
+1+2+3+4+515                                                                     
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl01.sql
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+	num3 dept.deptno%type;
+	                *
+5행에 오류:
+ORA-06550: 줄 5, 열7:PLS-00201: 'DEPT.DEPTNO' 식별자가 정의되어야 합니다
+ORA-06550: 줄 5, 열7:PL/SQL: Item ignored
+ORA-06550: 줄 8, 열2:PLS-00320: 이 식의 유형 정의가 불완전하거나 잘못되었습니다
+ORA-06550: 줄 8, 열2:PL/SQL: Statement ignored
+ORA-06550: 줄 11, 열32:PLS-00320: 이 식의 유형 정의가 불완전하거나
+잘못되었습니다
+ORA-06550: 줄 11, 열2:PL/SQL: Statement ignored 
+
+
+SQL> ed pl02.sql
+
+SQL> desc ex01.sql
+ERROR:
+ORA-04043: ex01.sql 객체는 존재하지 않습니다. 
+
+
+SQL> create table ex01 (num1 number,num2 number);
+create table ex01 (num1 number,num2 number)
+             *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create table ex01 (num1 number,num2 number);
+create table ex01 (num1 number,num2 number)
+             *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> desc ex01
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM1                                               NUMBER
+ NUM2                                               NUMBER
+
+SQL> ed pl01.sql
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+num1=1234                                                                       
+num2=4321                                                                       
+num3=12                                                                         
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl02.sql
+
+SQL> select * from ex01
+  2  ;
+
+      NUM1       NUM2                                                           
+---------- ----------                                                           
+         1       1111                                                           
+         2       2222                                                           
+         3       3333                                                           
+         5       5555                                                           
+        10                                                                      
+
+SQL> delete from ex01 where num1 in (1,2,3,5,10);
+
+5 행이 삭제되었습니다.
+
+SQL> commit;
+
+커밋이 완료되었습니다.
+
+SQL> select * from ex01
+  2  ;
+
+선택된 레코드가 없습니다.
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+num1=1234                                                                       
+num2=4321                                                                       
+num3=12                                                                         
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl02.sql
+
+SQL> select * from ex01
+  2  ;
+
+      NUM1       NUM2                                                           
+---------- ----------                                                           
+      1234       4321                                                           
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+num1=1                                                                          
+num2=1111                                                                       
+num3=12                                                                         
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from ex01
+  2  ;
+
+      NUM1       NUM2                                                           
+---------- ----------                                                           
+      1234       4321                                                           
+         1       1111                                                           
+
+SQL> delete from ex01 where num1=1234;
+
+1 행이 삭제되었습니다.
+
+SQL> ed pl02.sql
+
+SQL> @pl02.sql
+v_num1=1                                                                        
+v_num2=1111                                                                     
+v_num3=1111                                                                     
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> select * from ex01
+  2  ;
+
+      NUM1       NUM2                                                           
+---------- ----------                                                           
+         1       1111                                                           
+
+SQL> ed pl02.sql
+
+SQL> spool off

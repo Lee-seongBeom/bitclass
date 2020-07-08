@@ -1,0 +1,21 @@
+package test;
+
+public class Test13 {
+
+	public static void main(String[] args) {
+		String msg = "1234";
+		while(true){
+			for(int i=0;i<msg.length();i++){
+				if(msg.charAt(i)>='0' && msg.charAt(i)<='9'){
+					System.out.println(msg);
+					break;
+				}else{
+					break;
+				}
+			}
+		}
+		
+
+	}
+
+}

@@ -1,0 +1,26 @@
+package com.bit.day20;
+
+class Lec11<T>{
+	T obj;
+	
+	void setObj(T obj){
+		this.obj = obj;
+	}
+	
+	T getObj(){
+		return obj;
+	}
+}
+
+
+public class Ex11 {
+
+	public static void main(String[] args) {
+		Lec11<String> lec =new Lec11<>();
+		lec.setObj("test");
+		String msg =lec.getObj();
+		System.out.println(msg);
+		
+	}
+
+}

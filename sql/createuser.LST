@@ -1,0 +1,178 @@
+SQL> create user user01 identified by "1234";
+
+사용자가 생성되었습니다.
+
+SQL> connect user01/1234;
+ERROR:
+ORA-01045: user USER01 lacks CREATE SESSION privilege; logon denied 
+
+
+경고: 이제는 ORACLE에 연결되어 있지 않습니다.
+SQL> connect system/oracle;
+연결되었습니다.
+SQL> grant create session to user01;
+
+권한이 부여되었습니다.
+
+SQL> conn user01/1234;
+연결되었습니다.
+SQL> create table ex01(num number);
+create table ex01(num number)
+*
+1행에 오류:
+ORA-01031: 권한이 불충분합니다 
+
+
+SQL> conn system/oracle;
+연결되었습니다.
+SQL> grant create table to user01;
+
+권한이 부여되었습니다.
+
+SQL> conn user01/1234;
+연결되었습니다.
+SQL> create table ex01(num number);
+create table ex01(num number)
+*
+1행에 오류:
+ORA-01950: 테이블스페이스 'SYSTEM'에 대한 권한이 없습니다. 
+
+
+SQL> create tablespace add01 datafile 'C:\oraclexe\oradata\XE\add01.DBF' size 100m;
+create tablespace add01 datafile 'C:\oraclexe\oradata\XE\add01.DBF' size 100m
+*
+1행에 오류:
+ORA-01031: 권한이 불충분합니다 
+
+
+SQL> conn system/oracle
+연결되었습니다.
+SQL> create tablespace add01 datafile 'C:\oraclexe\oradata\XE\add01.DBF' size 100m;
+
+테이블스페이스가 생성되었습니다.
+
+SQL> alter user user01 quota 10m on add01;
+
+사용자가 변경되었습니다.
+
+SQL> conn user01/1234
+연결되었습니다.
+SQL> create table ex01(num number);
+create table ex01(num number)
+*
+1행에 오류:
+ORA-01950: 테이블스페이스 'SYSTEM'에 대한 권한이 없습니다. 
+
+
+SQL> conn system/oracle
+연결되었습니다.
+SQL> create user user02 indentified by abcd default tablespace add01;
+create user user02 indentified by abcd default tablespace add01
+                   *
+1행에 오류:
+ORA-00922: 누락된 또는 부적합한 옵션 
+
+
+SQL> create user user02 identified by abcd default tablespace add01;
+
+사용자가 생성되었습니다.
+
+SQL> grant create session to user02;
+
+권한이 부여되었습니다.
+
+SQL> grant create table to user02;
+
+권한이 부여되었습니다.
+
+SQL> conn user02/abcd
+연결되었습니다.
+SQL> conn system/oracle
+연결되었습니다.
+SQL> alter user user02 quota 10m on add01;
+
+사용자가 변경되었습니다.
+
+SQL> create table ex01(num number);
+create table ex01(num number)
+             *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> conn user02/abcd;
+연결되었습니다.
+SQL> create table ex01(num number);
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex01 values (1111);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex01 values (2222);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex01;
+
+       NUM                                                                      
+----------                                                                      
+      1111                                                                      
+      2222                                                                      
+
+SQL> drop table ex01;
+
+테이블이 삭제되었습니다.
+
+SQL> conn system/oracle;
+연결되었습니다.
+SQL> grant dba to user02;
+
+권한이 부여되었습니다.
+
+SQL> revoke dba from user02;
+
+권한이 취소되었습니다.
+
+SQL> grant dba to scott;
+
+권한이 부여되었습니다.
+
+SQL> conn scott/tiger;
+연결되었습니다.
+SQL> declare
+  2  begin
+  3  dbms_output.put_line('test');
+  4  end;
+  5  /
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> set serveroutput on;
+SQL> begin
+  2  /
+begin
+    *
+1행에 오류:
+ORA-06550: 줄 1, 열5:PLS-00103: 심볼 "end-of-file"를 만났습니다 다음 중 하나가
+기대될 때: 
+begin case declare exit for goto if loop mod null pragma 
+raise return select update while with <식별자> 
+<큰 따옴표로 구분된 식별자> <바인드 변수> << 
+close current delete fetch lock insert open rollback 
+savepoint set sql execute commit forall merge pipe 
+
+
+SQL> declare
+  2  begin
+  3  dbms_output.put_line('test');
+  4  end;
+  5  /
+test                                                                            
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed dcl.sql;
+
+SQL> spool off

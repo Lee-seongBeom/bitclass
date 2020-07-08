@@ -1,0 +1,15 @@
+package com.bit.day20;
+
+class Ball{
+	
+	
+}
+
+
+public class Ex08 {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

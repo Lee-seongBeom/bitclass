@@ -1,0 +1,713 @@
+SQL> create table ex16(num number,sub varchar2(15));
+
+테이블이 생성되었습니다.
+
+SQL> insert into ex16 values(1,'test'1);
+insert into ex16 values(1,'test'1)
+                                *
+1행에 오류:
+ORA-00917: 누락된 콤마 
+
+
+SQL> insert into ex16 values(1,'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex16 values(2,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex16 values(3,'test3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16
+  2  ;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+
+SQL> insert into ex16 values (4,'test4');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16 where num=2;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         2 test2                                                                
+
+SQL> select max(num)+1 from ex16;
+
+MAX(NUM)+1                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> insert into ex16 values (5,'test5');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+         4 test4                                                                
+         5 test5                                                                
+
+SQL> insert into ex16 values ((select max(num)+1 from ex16),'test6');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> delete from ex16 where num=6;
+
+1 행이 삭제되었습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+         4 test4                                                                
+         5 test5                                                                
+
+SQL> insert into ex16 values ((select max(num)+1 from ex16),'test6');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+         4 test4                                                                
+         5 test5                                                                
+         6 test6                                                                
+
+6 개의 행이 선택되었습니다.
+
+SQL> insert into ex16 values ((select max(num)+1 from ex16),'test7');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+         4 test4                                                                
+         5 test5                                                                
+         6 test6                                                                
+         7 test7                                                                
+
+7 개의 행이 선택되었습니다.
+
+SQL> delete from ex16 where num=7;
+
+1 행이 삭제되었습니다.
+
+SQL> delete from ex16 where num=6;
+
+1 행이 삭제되었습니다.
+
+SQL> insert into ex16 values ((select max(num)+1 from ex16),'test7');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+         4 test4                                                                
+         5 test5                                                                
+         6 test7                                                                
+
+6 개의 행이 선택되었습니다.
+
+SQL> create table myseq(num number);
+
+테이블이 생성되었습니다.
+
+SQL> select * from myseq;
+
+선택된 레코드가 없습니다.
+
+SQL> desc myseq
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                                NUMBER
+
+SQL> insert into myseq values (0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> delete from ex16;
+
+6 행이 삭제되었습니다.
+
+SQL> insert into ex16 values ((select max(num)+1 from myseq),'test1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> update myseq set num=num+1;
+
+1 행이 갱신되었습니다.
+
+SQL> insert into ex16 values ((select max(num)+1 from myseq),'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> update myseq set num=num+1;
+
+1 행이 갱신되었습니다.
+
+SQL> insert into ex16 values ((select max(num)+1 from myseq),'test3');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> update myseq set num=num+1;
+
+1 행이 갱신되었습니다.
+
+SQL> select * from myseq;
+
+       NUM                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 test1                                                                
+         2 test2                                                                
+         3 test3                                                                
+
+SQL> delete from ex16;
+
+3 행이 삭제되었습니다.
+
+SQL> select * from ex16;
+
+선택된 레코드가 없습니다.
+
+SQL> create sequence ex16_seq;
+
+시퀀스가 생성되었습니다.
+
+SQL> insert into ex16 values (ex16_seq.nextval,'첫번째');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex16 values (ex16_seq.nextval,'두번째');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into ex16 values (ex16_seq.nextval,'세번째');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 첫번째                                                               
+         2 두번째                                                               
+         3 세번째                                                               
+
+SQL> delete from ex16 where num=3;
+
+1 행이 삭제되었습니다.
+
+SQL> insert into ex16 values (ex16_seq.nextval,'네번째');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from ex16;
+
+       NUM SUB                                                                  
+---------- ------------------------------                                       
+         1 첫번째                                                               
+         2 두번째                                                               
+         4 네번째                                                               
+
+SQL> select ex16_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select ex16_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> select ex16_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         7                                                                      
+
+SQL> select ex16_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select ex16_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select ex16_seq.currval from dual;
+
+   CURRVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select ex16_seq.currval from dual;
+
+   CURRVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select ex16_seq.currval from dual;
+
+   CURRVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> create sequence test01_seq start with 100;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test01_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       100                                                                      
+
+SQL> select test01_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       101                                                                      
+
+SQL> select test01_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       102                                                                      
+
+SQL> select test01_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       103                                                                      
+
+SQL> select test01_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       104                                                                      
+
+SQL> create sequence test02_seq start with 10;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test02.seq.currval from dual;
+select test02.seq.currval from dual
+              *
+1행에 오류:
+ORA-02289: 시퀀스가 존재하지 않습니다. 
+
+
+SQL> select test02_seq.currval from dual;
+select test02_seq.currval from dual
+       *
+1행에 오류:
+ORA-08002: 시퀀스 TEST02_SEQ.CURRVAL은 이 세션에서는 정의 되어 있지 않습니다 
+
+
+SQL> select test02_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select test02_seq.currval from dual;
+
+   CURRVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> create sequence test03_seq start with 10 increment by 2;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test03_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select test03_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> create sequence test04_seq maxvalue 10;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         7                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select test04_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select test04_seq.nextval from dual;
+select test04_seq.nextval from dual
+*
+1행에 오류:
+ORA-08004: 시퀀스 TEST04_SEQ.NEXTVAL exceeds MAXVALUE은 사례로 될 수 없습니다 
+
+
+SQL> create squence test05_seq maxvalue 10 cycle;
+create squence test05_seq maxvalue 10 cycle
+       *
+1행에 오류:
+ORA-00901: CREATE 명령어가 부적합합니다 
+
+
+SQL> create squence test05_seq maxvalue 10 cycle nocache;
+create squence test05_seq maxvalue 10 cycle nocache
+       *
+1행에 오류:
+ORA-00901: CREATE 명령어가 부적합합니다 
+
+
+SQL> create squence test05_seq maxvalue 10 cycle nocache;
+create squence test05_seq maxvalue 10 cycle nocache
+       *
+1행에 오류:
+ORA-00901: CREATE 명령어가 부적합합니다 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         7                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> create sequence test05_seq maxvalue 10 cycle nocache;
+create sequence test05_seq maxvalue 10 cycle nocache
+                *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         7                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select test05_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> create sequence test06_seq minvalue 5 maxvalue 10 cycle nocache;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test06_seq from dual;
+select test06_seq from dual
+       *
+1행에 오류:
+ORA-00904: "TEST06_SEQ": 부적합한 식별자 
+
+
+SQL> select test06_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select test06_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> create sequence test07_seq start with 8 minvalue 5 maxvalue 10 cycle nocache;
+
+시퀀스가 생성되었습니다.
+
+SQL> select test07_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select test07_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select test07_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select test07_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> 
+SQL> spool off

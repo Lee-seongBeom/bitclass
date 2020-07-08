@@ -1,0 +1,54 @@
+package com.bit.day20;
+
+class Lec10<T>{
+	T su;
+	String msg;
+	
+	void setSu(T su){
+		this.su=su;
+	}
+	
+	void setMsg(String msg){
+		this.msg=msg;
+	}
+	
+	T getSu(){
+		return su;
+	}
+	
+	String getMsg(){
+		return msg;
+	}
+}
+
+public class Ex10 {
+
+	public static void main(String[] args) {
+		Lec10<Integer> lec =new Lec10<Integer>();
+		
+		lec.setSu(1234);
+		System.out.println(lec.getSu());
+		int su=lec.getSu();
+
+		
+		System.out.println(lec.getSu());
+		lec.setMsg("hello");
+		System.out.println(lec.getMsg());
+		
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

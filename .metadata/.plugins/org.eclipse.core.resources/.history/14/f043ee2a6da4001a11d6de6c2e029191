@@ -1,0 +1,25 @@
+package com.bit.day20;
+
+import java.util.*;
+
+public class Ex02 {
+
+	public static void main(String[] args) {
+		Vector vec01 = new Vector();
+		System.out.println(vec01.capacity());
+		ArrayList list = new ArrayList();
+		
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		Vector vec02 = new Vector(list);
+		System.out.println(vec01.capacity());		
+//		Enumeration em = vec02.elements();
+//		while(em.hasMoreElements()){
+//			System.out.println(em.nextElement());
+//		}
+//		
+	}
+
+}

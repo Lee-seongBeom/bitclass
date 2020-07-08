@@ -1,0 +1,7 @@
+-- DCL (Role, Grant, Revoke)
+--
+-- create tablespace [테이블 스페이스명] datafile '[테이블스페이스 경로\파일명.dbf]' size __m;
+-- create user [아이디] identified by [비밀번호] default tablespace [테이블 스페이스명];
+-- alter user [아이디] quota 2m on [테이블 스페이스명];
+-- grant privilege_name, ...to [아이디];
+-- revoke [권한 또는 롤] from [아이디];

@@ -1,0 +1,180 @@
+SQL> ed pl15.sql
+
+SQL> create procedure proc01
+  2  is
+  3  -- 선언부
+  4  begin
+  5  dbms_output.put_line('hello world');
+  6  end;
+  7  /
+
+프로시저가 생성되었습니다.
+
+SQL> execute proc01;
+hello world                                                                     
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> @pl15.sql;
+create procedure proc01
+                 *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> ed pl15.sql
+
+SQL> @pl15.sql;
+SP2-0734: "replace pr..."(으)로 시작되는 알 수 없는 명령 - 나머지 줄은 무시되었습니다.
+SP2-0042: 알 수 없는 명령어 "is" - 나머지 줄 무시.
+hello world222                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl15.sql
+
+SQL> @pl15.sql;
+
+프로시저가 생성되었습니다.
+
+SQL> @pl15.sql;
+
+프로시저가 생성되었습니다.
+
+SQL> ed pl15.sql
+
+SQL> @pl15.sql;
+
+프로시저가 생성되었습니다.
+
+SQL> execute proc01;
+hello world222                                                                  
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl15.sql
+
+SQL> @pl15.sql
+
+프로시저가 생성되었습니다.
+
+SQL> execute proc01;
+BEGIN proc01; END;
+
+      *
+1행에 오류:
+ORA-06550: 줄 1, 열7:PLS-00306: 'PROC01' 호출 시 인수의 갯수나 유형이
+잘못되었습니다
+ORA-06550: 줄 1, 열7:PL/SQL: Statement ignored 
+
+
+SQL> execute proc01(123);
+hello world222123                                                               
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> ed pl15.sql
+
+SQL> @pl15.sql
+
+프로시저가 생성되었습니다.
+
+SQL> execute proc01
+BEGIN proc01; END;
+
+      *
+1행에 오류:
+ORA-06550: 줄 1, 열7:PLS-00306: 'PROC01' 호출 시 인수의 갯수나 유형이
+잘못되었습니다
+ORA-06550: 줄 1, 열7:PL/SQL: Statement ignored 
+
+
+SQL> execute proc01(1000)
+BEGIN proc01(1000); END;
+
+      *
+1행에 오류:
+ORA-06550: 줄 1, 열7:PLS-00306: 'PROC01' 호출 시 인수의 갯수나 유형이
+잘못되었습니다
+ORA-06550: 줄 1, 열7:PL/SQL: Statement ignored 
+
+
+SQL> execute proc01(1000);
+BEGIN proc01(1000); END;
+
+      *
+1행에 오류:
+ORA-06550: 줄 1, 열7:PLS-00306: 'PROC01' 호출 시 인수의 갯수나 유형이
+잘못되었습니다
+ORA-06550: 줄 1, 열7:PL/SQL: Statement ignored 
+
+
+SQL> declare
+  2  result number;
+  3  begin
+  4  proc01(100,result);
+  5  end;
+  6  /
+hello world222100                                                               
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> declare
+  2  result number;
+  3  begin
+  4  proc01(100,result);
+  5  dbms_output.put_line(result);
+  6  end;
+  7  /
+hello world222100                                                               
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> var num result;
+사용법: VAR[IABLE] [ <변수> [ NUMBER | CHAR | CHAR (n [CHAR|BYTE]) |
+                    VARCHAR2 (n [CHAR|BYTE]) | NCHAR | NCHAR (n) |
+                    NVARCHAR2 (n) | CLOB | NCLOB | REFCURSOR |
+                    BINARY_FLOAT | BINARY_DOUBLE ] ]
+SQL> var num result
+사용법: VAR[IABLE] [ <변수> [ NUMBER | CHAR | CHAR (n [CHAR|BYTE]) |
+                    VARCHAR2 (n [CHAR|BYTE]) | NCHAR | NCHAR (n) |
+                    NVARCHAR2 (n) | CLOB | NCLOB | REFCURSOR |
+                    BINARY_FLOAT | BINARY_DOUBLE ] ]
+SQL> var num result;
+사용법: VAR[IABLE] [ <변수> [ NUMBER | CHAR | CHAR (n [CHAR|BYTE]) |
+                    VARCHAR2 (n [CHAR|BYTE]) | NCHAR | NCHAR (n) |
+                    NVARCHAR2 (n) | CLOB | NCLOB | REFCURSOR |
+                    BINARY_FLOAT | BINARY_DOUBLE ] ]
+SQL> execute proc01(200,:result);
+SP2-0552: 바인드 변수 "RESULT" 가 정의되지 않았습니다.
+SQL> ed pl15.sql
+
+SQL> @pl15.sql
+
+프로시저가 생성되었습니다.
+
+SQL> execute proc01(100,:result);
+SP2-0552: 바인드 변수 "RESULT" 가 정의되지 않았습니다.
+SQL> declare
+  2  aaa number;
+  3  begin
+  4  proc01(4,:aaa);
+  5  dbms_output.put_line(aaa);
+  6  end;
+  7  /
+SP2-0552: 바인드 변수 "AAA" 가 정의되지 않았습니다.
+SQL> declare
+  2  aaa number;
+  3  begin
+  4  proc01(4,aaa);
+  5  dbms_output.put_line(aaa);
+  6  end;
+  7  /
+hello world2224                                                                 
+1004                                                                            
+
+PL/SQL 처리가 정상적으로 완료되었습니다.
+
+SQL> spoolf off
+SP2-0042: 알 수 없는 명령어 "spoolf off" - 나머지 줄 무시.
+SQL> spool off

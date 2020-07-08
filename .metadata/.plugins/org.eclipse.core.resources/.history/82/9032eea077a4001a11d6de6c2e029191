@@ -1,0 +1,47 @@
+package com.bit.day20;
+
+import java.util.*;
+
+class MyCar implements Comparable{
+
+	int su;
+	MyCar(int a){
+		this.su=a;
+	}
+	@Override
+	public int compareTo(Object obj) {
+		// TODO Auto-generated method stub
+		return su-((MyCar)obj).su;
+	}
+	
+}
+
+public class Ex04 {
+
+	public static void main(String[] args) {
+//		Set set01= new HashSet();
+		Set set01= new TreeSet();
+		
+		//HashSet 은 중복없음 순서없음 , TreeSet은 중복없음 크기순
+		
+		set01.add(new MyCar(1));
+		set01.add(new MyCar(2));
+		set01.add(new MyCar(3));
+		set01.add(new MyCar(4));
+
+//		set01.add("abc");
+//		set01.add("abcd");
+//		set01.add("abce");
+//		
+//		set01.add(2222);
+//		set01.add(3333);
+//		set01.add(4444);
+//		
+		Iterator ite= set01.iterator();
+		while(ite.hasNext()){
+			System.out.println(ite.next());
+		}
+		
+	}
+
+}

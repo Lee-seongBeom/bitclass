@@ -1,0 +1,12 @@
+package com.bit.day20;
+
+import java.util.Vector;
+
+public class Ex02 {
+
+	public static void main(String[] args) {
+		Vector vec01 = new Vector();
+		System.out.println(vec01.capacity());
+	}
+
+}
