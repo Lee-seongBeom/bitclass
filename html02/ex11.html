@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            body{
+                margin: 0px;
+            }
+            h1{
+                margin: 0px;
+                background-color:aqua; 
+            }
+            
+            h1~p{
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin-right: 0px;
+                margin-left: 100px;
+                width: 200px;
+                height: 100px;
+                background-color: bisque;
+            }
+            h1+p{
+                border-width: 10px;
+                border-color:red;
+                border-style: dotted;
+            }
+            div{
+                background-color: forestgreen;
+                height: 100px;
+            }
+            table,th,td{
+/*                border-spacing: 0px;*/
+                border-collapse: collapse;
+                border-style: solid;
+                border-color: red;
+                border-width: 3px;
+            }
+            /*      글속성       
+            h1{
+                color: rgb(255,0,0);
+                text-align: center;
+            }
+            h1+p{
+                font-size: 30pt;
+                font-family: "궁서체",fantasy,inherit; 
+                여러개하는이유는 브라우저가 갖지않은 폰트라면 순차적으로 적용하기위함 
+                text-align: justify;
+                
+            }
+            h1+p+p{
+                font-size: 30px;
+                font-style: italic;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+            h1+p+p+p{
+                font-size: 12pt;
+                text-indent: 50px;
+                text-decoration: overline;
+            }
+            h1+p+p+p+p{
+                font-size: 16px;
+                text-decoration: line-through;
+            }
+            h1+p+p+p+p+p{
+                font-size: 1em;
+            }
+            */
+        
+            
+        </style>
+    </head>
+    <body>
+        <h1>속성</h1>
+        <p>30pt</p>
+        <p>30px</p>
+        <p>default 12pt</p>
+        <p>default 16px</p>
+        <p>1em = 12pt = 16px = default</p>
+        <div>box</div>
+        <div>
+            <h2>제목1</h2>
+            <h2>제목2</h2>
+            <p>내용1</p>
+            <p>내용2</p>
+        </div>
+        <div></div>
+        <table>
+        
+            <tr>
+                <th>col1</th>
+                <th>col2</th>
+                <th>col3</th>
+                <th>col4</th>
+            </tr>
+        
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+           
+            <tr>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
