@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+            div{
+                width: 150px;
+                height: 150px;
+                background-color: gray;
+                
+            }
+            body>div:first-child{
+                
+                background-color: #ff0000;
+            }
+             div:nth-child(3){
+                background-color: #00ff00;
+            }
+            div:nth-child(4){
+                background-color: #0000ff;
+            }
+           
+            div:nth-child(2){
+                position:fixed;
+/*                top: 0px;*/
+                left: 50px;
+            }
+            div+div>div{
+                position: absolute;
+                opacity:1;
+                top: 30px;
+                left: 0px;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div>box1</div>
+        <div>
+            box2-1
+                <div>box2-2</div>
+        </div>
+        <div>box3</div>
+        <div>box4</div>
+    </body>
+
+</html>
