@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+
+<img alt="" src="img/logo.png" align="left">
+	<center>
+	<table border="1" width="100%" bgcolor="gray">
+		

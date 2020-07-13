@@ -1,0 +1,15 @@
+package com.bit.util;
+
+import java.sql.Connection;
+
+public class Myoracle {
+	private static Connection conn;
+	
+	private Myoracle() {
+		
+	}
+	
+	public static Connection getConn(){
+		return conn;
+	}
+}

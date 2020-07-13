@@ -1,0 +1,6 @@
+package com.bit.emp;
+
+// javaBean -> Dto
+public class EmpDto {
+	
+}

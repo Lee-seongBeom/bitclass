@@ -1,0 +1,20 @@
+package com.bit.emp;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+
+public class Emp02Delete {
+	
+	public void delete(int sabun){
+		String sql="{call emp02delete(?,"+sabun+")}";
+		
+		Connection conn = null;
+		CallableStatement cstmt = null;
+		
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

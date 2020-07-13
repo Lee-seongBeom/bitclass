@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.bit.emp.emp02insert&apos; to &apos;Emp02Insert&apos;&#x0D;&#x0A;- Original project: &apos;emp_crud&apos;&#x0D;&#x0A;- Original element: &apos;com.bit.emp.emp02insert&apos;&#x0D;&#x0A;- Renamed element: &apos;com.bit.emp.Emp02Insert&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;emp02insert&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.bit.emp{emp02insert.java[emp02insert" matchStrategy="1" name="Emp02Insert" qualified="false" references="true" similarDeclarations="false" stamp="1594000753384" textual="false" version="1.0"/>
+</session>

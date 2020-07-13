@@ -1,0 +1,12 @@
+package com.bit.emp;
+
+public class Emp02Update {
+
+	public void update(String name,int pay,int sabun){
+		String sql="{call emp02update(?,"+name+","+pay+","+sabun+")}";
+	}
+	public static void main(String[] args) {
+
+	}
+
+}
