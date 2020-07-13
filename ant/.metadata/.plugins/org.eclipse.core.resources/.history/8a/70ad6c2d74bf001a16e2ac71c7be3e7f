@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ex01" default="third" basedir=".">
+	<description>ex01 build file</description>
+	<target name="first">
+	</target>
+	<target name="second" depends="first">
+	</target>
+	<target name="third" depends="second">
+	</target>
+<!--  -->
+</project>

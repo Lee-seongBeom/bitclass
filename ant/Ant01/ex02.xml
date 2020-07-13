@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ex02" default="jarTest" basedir=".">
+	<descripton>jar Test!</descripton>
+	<property name="targetDir" location="D:\ant"/>
+	<property name="sourceDir" location="${basedir}\src"/>
+	<target name="jarTest">
+	
+	</target>
+</project>
