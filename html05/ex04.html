@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <script type="text/javascript">
+        // js 에는 함수와 메서드가 같이 존재
+        // java 에는 메서드만 존재
+        // pl은 함수만 존재
+        
+        var obj={
+            'key1':'val1',
+            'key2':function(){}
+        };
+        
+        function fun(a) {
+            if (typeof a == 'function') {
+                a();
+            }else if(typeof a=='string'){
+                console.log(a);
+            }else if(typeof a=='number'){
+                console.log(a+1);
+            }else{
+                console.log(a[0]);
+            }
+        }
+        
+        func01(function(){console.log('test');});
+        
+    </script>
+</head>
+
+<body>
+
+</body></html>
