@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+</head>
+
+<body>
+    <h1>학생성적관리 프로그램</h1>
+    
+    
+    <script type="text/javascript">
+        var arr=new Array();
+//        var obj={'num':1,'name':'user1','kor':10,'eng':20,'math':30};
+//        arr.push(obj);
+//        obj={'num':2,'name':'user2','kor':30,'eng':40,'math':50};
+//        arr.push(obj);
+//        obj={'num':3,'name':'user3','kor':90,'eng':80,'math':70};
+//        arr.push(obj);
+        var num=0;
+        var name;
+        var kor;
+        var eng;
+        var math;
+        
+        
+        var obj={'num':this.num,'name':this.name}
+        
+        function input(num,name,kor,eng,math){
+//            arr.push(obj.num,obj.name,obj.kor,obj.eng,obj.math);
+            arr.push(++num,name,kor,eng,math);
+        }
+        
+        window.document.write('<table>');
+        window.document.write('<tr>');
+        window.document.write('<th>학번</th>');
+        window.document.write('<th>이름</th>');
+        window.document.write('<th>국어</th>');
+        window.document.write('<th>영어</th>');
+        window.document.write('<th>수학</th>');
+        window.document.write('</tr>');
+        
+        for(var i=0;i<arr.length;i++){
+            obj=arr[i];
+            window.document.write('<tr>');
+            window.document.write('<td>'+obj.num+'</td>');
+            window.document.write('<td>'+obj.name+'</td>');
+            window.document.write('<td>'+obj.kor+'</td>');
+            window.document.write('<td>'+obj.eng+'</td>');
+            window.document.write('<td>'+obj.math+'</td>');
+            window.document.write('</tr>');
+        }
+        
+        window.document.write('</table>');
+    </script>
+    <div>
+        
+        
+    </div>
+
+</body>
+
+</html>

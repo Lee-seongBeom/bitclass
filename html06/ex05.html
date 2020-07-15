@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+</head>
+
+<body>
+    <h1>학생성적관리 프로그램</h1>
+    
+    
+    <script type="text/javascript">
+        var arr=new Array();
+        var cnt=0;
+        
+        function newInstance(name,a,b,c){
+            var obj2={'num':++cnt,'name':'user1','kor':10,'eng':20,'math':30,
+                        'setName':function(name){
+                            this.name=name;
+                        }
+                        ,'setKor':function(kor){
+                            this.kor=kor;
+                         },
+                        'setEng':function(eng){
+                            this.eng=eng;
+                        },
+                        'setMath':function(math){
+                            this.math=math;
+                        },
+                        'getKor':function(){
+                            return this.kor;
+                        },
+                        'getEng':function(){
+                            return this.eng;
+                        },
+                        'getMath':function(){
+                            return this.math;
+                        },
+                        'getName':function(){
+                            return this.name;
+                        }
+                     };
+            obj2.setName(name);
+            obj2.setKor(a);        
+            obj2.setEng(b);        
+            obj2.setMath(c);        
+            return obj2;
+        }
+        arr.push(newInstance('user1',12,23,56));
+        arr.push(newInstance('user2',45,65,78));
+        arr.push(newInstance('user3',45,12,56));
+        
+        window.document.write('<table>');
+        window.document.write('<tr>');
+        window.document.write('<th>학번</th>');
+        window.document.write('<th>이름</th>');
+        window.document.write('<th>국어</th>');
+        window.document.write('<th>영어</th>');
+        window.document.write('<th>수학</th>');
+        window.document.write('</tr>');
+        
+        for(var i=0;i<arr.length;i++){
+            var obj1=arr[i];
+            window.document.write('<tr>');
+            window.document.write('<td>'+obj1.num+'</td>');
+            window.document.write('<td>'+obj1.getName()+'</td>');
+            window.document.write('<td>'+obj1.getKor()+'</td>');
+            window.document.write('<td>'+obj1.getEng()+'</td>');
+            window.document.write('<td>'+obj1.getMath()+'</td>');
+            window.document.write('</tr>');
+        }
+        
+        window.document.write('</table>');
+    </script>
+    <div>
+        
+        
+    </div>
+
+</body>
+
+</html>

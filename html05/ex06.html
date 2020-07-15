@@ -9,12 +9,12 @@
         // 클로저
         // 변수의 라이프사이클을 벗어나서 계속 사용가능
         
-        /*function func01(){
+        function func01(){
             var z=function(){
                 console.log('test');
             };
             return z;
-        }*/
+        }
         
         function func02(){
             var obj={'key1':'val1'};
@@ -24,7 +24,7 @@
             };
         }
         
-        var a=func02();
+        var a=func01();
         a();
 //        console.log(a);
     </script>
