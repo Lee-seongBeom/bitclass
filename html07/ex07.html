@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel='stylesheet' type="text/css">
+        #target{
+            width: 300px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var target=document.querySelector('#target');
+            var body=document.querySelector('body');
+            function over(){
+                console.log('마우스 over');
+            }
+            
+            function out(){
+                console.log('마우스 out');
+            }
+//            target.onmouseover=over;
+//            body.onmouseover=over;
+//            
+//            target.onmouseout=out;
+//            body.onmouseout=out;
+//            
+            
+//            target.onmouseover=function(){
+//                console.log('마우스 over');
+//            }
+//            target.onmouseout=function(){
+//                console.log('마우스 out');
+//            }
+//            
+//            body.onmouseover=function(){
+//                console.log('body  마우스 over');
+//            }
+//            body.onmouseout=function(){
+//                console.log('body  마우스 out');
+//            }
+            
+            body.onmouseenter=function(){
+                console.log('마우스 body enter');
+            }
+            
+            target.onmouseenter=function(){
+                console.log('마우스 target enter');
+            }
+            body.onmouseleave=function(){
+                console.log('마우스 body leave');
+            }
+            
+            target.onmouseleave=function(){
+                console.log('마우스 target leave');
+            }
+            
+            
+            
+//            target.onmouseenter=function(){
+//                console.log("마우스 enter");
+//            };
+//            target.onmouseleave=function(){
+//                console.log("마우스 leave")
+//            };
+//            
+            
+        };
+    </script>
+    
+</head>
+
+<body>
+    <h1>마우스 모션 이벤트</h1>
+    <div id="target"></div>
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
