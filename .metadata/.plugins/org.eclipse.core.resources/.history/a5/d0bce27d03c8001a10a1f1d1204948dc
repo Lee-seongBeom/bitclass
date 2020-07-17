@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var table;
+	window.onload=function(){
+		table=document.querySelector("table");
+		//table.innerHTML="<tr><td>aaa</td><td>bbb</td></tr>";
+		
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				
+			}
+		};
+		
+		
+		xhr.open('get','student.json');
+		xhr.send();
+	};
+</script>
+</head>
+<body>
+	<h1>JSON parsing</h1>
+	<table/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

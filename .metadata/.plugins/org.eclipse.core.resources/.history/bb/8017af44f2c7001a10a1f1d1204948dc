@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var table;
+	var xhr,xml;
+	
+	window.onload=function(){
+		table=document.querySelector("table");
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				xml=xhr.responseXML;
+				console.log(xml.children[0].children);
+				var arr=xml.children[0].children;
+				var msg="";
+				for(var i=0;i<arr.length;i++){
+					arr[i]
+					
+					msg+="<tr>";
+					msg+="<td>"++"</td>";
+					msg+="</tr>";
+					
+					
+				}
+			}
+		};
+		xhr.open('get','ex03.xml');
+		xhr.send();
+		
+	};
+</script>
+
+</head>
+<body>
+	<h1>AJAX (Asynchronous Javascript And XML 비동기자바스크립트 and XML)</h1>
+	<table>
+		<tr>
+			<th>학번</th>
+			<th>이름</th>
+			<th>국어</th>
+			<th>영어</th>
+			<th>수학</th>
+		</tr>
+	</table>
+</body>
+</html>

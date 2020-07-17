@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<%@page import="com.bit.util.MyOracle"%>
+<%@ page language="java" contentType="application/xml"
+    pageEncoding="UTF-8" import="java.sql.*" %>
+<students>
+	<%
+	String sql="select * from student01";
+	Connection conn=null;
+	Statement stmt=null;
+	ResultSet rs=null;
+	
+	try{
+		conn=MyOracle.getConnection();
+		stmt=conn.createStatement();
+		rs=stmt.executeQuery(sql);
+		while(rs.next()){
+			out.println("<student>");
+			out.println("<num>");
+			out.println("</num>");
+			out.println("<name>");
+			out.println("</name>");
+			out.println("<kor>");
+			out.println("</kor>");
+			out.println("<eng>");
+			out.println("</eng>");
+			out.println("<math>");
+			out.println("</math>");
+			out.println("</student>");
+		}
+		
+	}finally{
+		if(rs!=null)rs.close();
+		if(stmt!=null)stmt.close();
+		if(conn!=null)conn.close();
+	}
+	
+	
+	
+	%>
+</students>

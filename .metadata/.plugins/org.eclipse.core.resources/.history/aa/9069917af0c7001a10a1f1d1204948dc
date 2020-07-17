@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var table;
+	var xhr;
+	window.onload=function(){
+		table=document.querySelector("table");
+		xhr=new XMLHttpRequest();
+		
+		xhr.open('get','ex03.xml');
+		xhr.send();
+		
+		
+	};
+</script>
+
+</head>
+<body>
+	<h1>AJAX (Asynchronous Javascript And XML 비동기자바스크립트 and XML)</h1>
+	<table>
+		<tr>
+			<th>학번</th>
+			<th>이름</th>
+			<th>국어</th>
+			<th>영어</th>
+			<th>수학</th>
+		</tr>
+	</table>
+</body>
+</html>

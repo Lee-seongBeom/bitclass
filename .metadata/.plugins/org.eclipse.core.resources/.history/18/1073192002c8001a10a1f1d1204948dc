@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var table;
+	window.onload=function(){
+		table=document.querySelector("table");
+		talbe.innerHTML="<tr><td>aaa<td><td>bbb<td></tr>";
+	};
+</script>
+</head>
+<body>
+	<h1>JSON parsing</h1>
+	<table/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
