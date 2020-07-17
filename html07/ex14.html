@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+        }
+        div>div{
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+        }
+        div>div>div{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        
+        var box1,box2,box3;
+        // 버블링
+        window.onload=function(){
+            
+            box1=document.querySelector('body>div');
+            box2=document.querySelector('body>div>div');
+            box3=document.querySelector('body>div>div>div');
+
+        
+//            box1.ondblclick=function(){
+//                console.log('box1 click');
+//            };
+//
+//            box2.ondblclick=function(e){
+//                e.stopPropagation(); // 이벤트 전파x (버블링); , 담벼락 쌓듯이
+//                console.log('box2 click');
+//            };
+//
+//            box3.ondblclick=function(e){
+//                console.log('box3 click');
+//            };
+        
+
+        
+        // 캡쳐링 : 이벤트 전파방식이 부모로부터 역순으로 이벤트실행
+        
+            box1.addEventListener('click',function(e){
+                console.log('box1 click');
+            },true);// true -> 캡쳐링  default는 false
+        
+            box2.addEventListener('click',function(e){
+                e.stopPropagation();
+                console.log('box2 click');
+            },true);
+        
+            box3.addEventListener('click',function(e){
+                console.log('box3 click');
+            },true);
+        }; 
+        
+    </script>
+    
+    
+</head>
+
+<body>
+    <h1>버블링과 캡쳐링</h1>
+    <div>box1
+        <div>box2
+            <div>box3</div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
