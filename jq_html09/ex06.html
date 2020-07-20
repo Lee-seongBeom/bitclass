@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        h1{
+            width: 200px;
+            height: 100px;
+            margin: 1px;
+            padding: 2px;
+            border: 1px solid gray;
+            
+        }
+    </style>
+    
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    
+    <script type="text/javascript">
+        
+        window.onload=function(){
+            console.log($('h1').width(),$('h1').height());
+            console.log($('h1').css('width'),$('h1').css('height'));
+            console.log($('h1').innerWidth(),$('h1').innerHeight());// padding 추가
+            console.log($('h1').outerWidth(),$('h1').outerHeight());// padding+border 추가
+            
+            console.log($('body').width(),$('body').height());
+            
+            console.log($(document).width(),$(document).height());
+            console.log($(document).innerWidth(),$(document).innerHeight());
+            console.log($(document).outerWidth(),$(document).outerHeight());
+            
+        };
+    </script>
+</head>
+
+<body>
+    <h1>etx css</h1>
+</body></html>

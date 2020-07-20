@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        
+        
+        window.onload=function(){
+             // 태그 선택자
+//            $("h1").css("color","red");
+//            $("p").css("color","blue");
+//            $(".cl1").css("color","lightgreen");
+//            $("#it2").css('color','aqua');
+            
+//            $('h1,p').css('color','red');
+            
+//            $('li:nth-child(2n)').css('color','blue');
+//            var h1=$('div+ul');
+//            h1.css('color','red');
+//            $('.cl1').css('color','green');
+            
+            //element 선택자
+//            var h1=document.querySelector('h1');
+//            $(h1).css('color','red');
+//            var lis=document.getElementsByTagName('li');
+//            $(lis).css('color','red');
+//            var lis2=document.querySelectorAll('div>ul>li');
+//            $(lis2).css('color','blue');
+            
+//            var p1=document.querySelector('h1+p');
+//            var p2=document.querySelector('h1+p+p');
+//            var ps=[p1,p2];
+//            $(ps).css('color','red');
+            
+            // 필터링
+//            $('div>ul>li:nth-child(1)').css('color','red');
+//            $('div>ul>li').eq(0).css('color','red');
+            
+//            // 체이닝 기법
+//            $('div>ul>li').css('color','red').eq(0).css('background-color','gray').next().css('background-color','yellow').next().css('background-color','green'); 
+            
+            //
+            $('h1').next().next().next().children().children().first().parent().children().last().parent().parent().next().children().eq(6).children().children().eq(2).prev().css('color','red');
+            //eq 는 js의 인덱스 => 0부터 //css 는 인덱스가 1부터
+            
+        };
+    </script>
+</head>
+
+<body>
+    <h1>선택자</h1>
+    <p>엘리먼트를 선택합니다</p>
+    <p>css의 선택자 그대로</p>
+    <div>
+        <ul>
+            <li>item1</li>
+            <li id="it2">item2</li>
+            <li>item3</li>
+            <li id="it4">item4</li>
+        </ul>
+    </div>
+    
+    
+    
+    <ul>
+        <li>item1</li>
+        <li class="cl1">item2</li>
+        <li>item3</li>
+        <li class="cl1">item4</li>
+        <li class="cl1">item5</li>
+        <li>item6</li>
+        <li>
+            <ol>
+                <li>item7-1</li>
+                <li>item7-2</li>
+                <li>item7-3</li>
+                <li>item7-4</li>
+            </ol>
+        </li>
+    </ul>
+    
+</body>
+</html>
+
+
