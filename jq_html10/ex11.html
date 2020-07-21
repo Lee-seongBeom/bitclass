@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel='stylesheet' type="text/css">
+        #target{
+            width: 500px;
+            height: 400px;
+            position: absolute;
+/*            left: 200px;*/
+            background-color: gray;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+//            $('div').click(function(e){
+//                console.log('click client',e.clientX,e.clientY);
+//                console.log('click page',e.pageX,e.pageY);
+//                console.log('click screen',e.screenX,e.screenY);
+//            });
+            
+//            $('div').mousedown(function(){
+//                console.log('down');
+//            });
+//            $('div').mouseup(function(){
+//                console.log('up');
+//            });
+
+//            $('div').dblclick(function(){
+//                console.log('dblclick');
+//            });
+            
+//            $('document').mouseover(function(){
+//               console.log('docu over');
+//            }).mouseout(function(){
+//                console.log('docu out');
+//            });
+//            
+//            
+//            $('div').mouseover(function(e){
+//                e.stopPropagation();// 이벤트전파 막기 ( 버블링 )
+//               console.log('mouse over');
+//            }).mouseout(function(e){
+//                e.stopPropagation();
+//                console.log('mouse out',e);
+//            });
+            
+            $('div').mousemove(function (e){
+                console.log(e.clientX,e.clientY);
+            });
+            
+            
+        });
+    
+    </script>
+</head>
+
+<body>
+    <h1>마우스이벤트</h1>
+    <div id="target"></div>
+</body></html>

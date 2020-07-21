@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            height: 100px;
+            overflow-y: scroll;
+        }
+    </style>
+    
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(){
+//            $('h1').text('test');
+            console.log('window load');
+        });
+        
+        
+        $(document).ready(function(){
+           console.log('document load');
+            $('div').scroll(function(e){
+                console.log(e);
+            });
+        });
+        
+        $(function(){
+            console.log('ready');
+        });
+        
+        
+//        $(window).scroll(function(){
+//            console.log('scroll');
+//        });
+        
+//        $(window).resize(function(){
+//            console.log('창크기 변화');
+//        });
+        
+        $(window).unload(function(){
+            alert('다른페이지이동');
+        });
+        
+        
+    </script>
+</head>
+
+<body>
+    <h1>onload 이벤트</h1>
+    <a href="ex01.html">LINK</a>
+    <div>
+        <p>sasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfa<br><br>sdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsa<br>sdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadf<br>safsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsf<br>dsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfs<br>adfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsas<br>dfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasd<br><br>fsaddsafsfdsasdfsaddfasdfsadf<br>safsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdssafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdf<br>sadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdssafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsadd<br>fasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdss<br><br>afsfdsasdfsaddfasdfsadfsa<br>fsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsaddfasdfsadfsafsfdsasdfsad<br>dfasdfsadfsafsfdsfasdfsadfsafsfdsdfs</p>
+        
+    </div>
+
+</body></html>
