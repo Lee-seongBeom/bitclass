@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           $('div').animate({'margin-left':'300px'},3000).animate({'margin-top':'300px'},3000).animate({'margin-left':'0px'},3000).animate({'margin-top':'0px'},3000);
+            
+                $('div').dequeue();
+            
+            $('button').eq(0).click(function(){
+//                $('div').finish();// 최종 종료
+                //.stop()은 현재 애니메이션 스킵
+//                while($('div').queue().length){
+//                    $('div').stop();
+//                }
+                
+                console.log($('div').queue().length);
+//                $('div').clearQueue().stop();
+                
+            });
+            $('button').eq(1).click(function(){
+                $('div').stop();
+            });
+            
+            console.log('end');
+            // 애니메이션은 queue 구조
+            
+        });
+    </script>
+</head>
+
+<body>
+    <h1>동작제어</h1>
+    <button>finish</button>
+    <button>stop</button>
+    <div>box</div>
+</body>
+
+</html>

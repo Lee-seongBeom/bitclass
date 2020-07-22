@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style rel="stylesheet" type="text/css">
+        #target{
+            width: 300px;
+            height: 300px;
+            background-color: gray;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+//            $('#target').on('click',function(){
+//               console.log('클릭1 메서드'); 
+//            });
+//            
+//             $('#target').on('click',function(){
+//               console.log('클릭2 메서드'); 
+//            });
+            
+            
+//            $('#target').click(function(){
+//               console.log('click 메서드');
+//            }); // dom level 3  -> addActionListener
+//            
+//            $('#target').click(function(){
+//               console.log('또다른 click 메서드');
+//            });
+            
+            $('a').on('click',function(){
+               console.log('클릭2 메서드'); 
+                return true;
+            });
+            
+            $('a').click(function(e){
+                e.preventDefault();
+               console.log('page 이동');
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>이벤트 바인딩</h1>
+    <div id="target">
+        <a href="http://naver.com">link</a>
+        
+    </div>
+</body>
+
+</html>

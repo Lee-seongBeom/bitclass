@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.min.css"/>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+      
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').bxSlider({ 
+                'slideWidth':150,'minSlides':2,'maxSlides':3,'moveSlides':1,'modeSlides':'horizontal','speed':1000,
+//                'startSlide':1,
+//                'randomStart':true,
+                'captions':true,
+//                'pause':1000,
+//                'stopAutoOnClick':true,
+//                'controls':true,
+//                'nextText':'다음',
+//                'prevText':'이전',
+//                'auto':true,
+//                'autoControls':true
+//                'pager':false
+//                'pagerType':'short'
+                'onSliderLoad':function(idx){
+                    console.log('bx loading,.,',idx);
+                },
+                onSliderResize:function(idx){
+                    console.log('Resize.,',idx);
+                },
+                onSlideNext:function(ele,b,a){
+                    console.log('next,,,',b,a,ele.html());
+                },
+                onSlideAfter:function(ele,b,a){
+                    console.log('after..',b,a);
+                },
+                onSlideBefore:function(ele,b,a){
+                    console.log('before...',b,a);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="slider">
+        <div><img src="img/img01.jpg" title="01"></div>
+        <div><img src="img/img02.jpg" title="02"></div>
+        <div><img src="img/img03.jpg" title="03"></div>
+        <div><img src="img/img04.jpg" title="04"></div>
+        <div><img src="img/img05.jpg" title="05"></div>
+        <div><img src="img/img06.jpg" title="06"></div>
+    </div>
+</body>
+
+</html>
