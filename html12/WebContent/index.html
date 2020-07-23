@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/header.css"/>
+<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.min.css"/>
+
+<style rel="stylesheet" type="text/css">
+	#menu{
+		background-color:gray;
+		height:50px;
+	
+	}
+	#menu>ul{
+		list-style:none;
+		width:400px;
+		margin:0px auto;
+		padding:0px;
+	}
+	#menu>ul>li{
+		border-right:1px solid white;
+		border-left:1px solid white;
+		box-sizing:border-box;
+		float:left;
+		width:100px;
+		height:50px;
+		line-height:50px;
+	}
+	#menu>ul>li>a{
+		color:white;
+		text-decoration:none;
+		text-align:center;
+		display:block;
+		background-color:gray;
+	}
+	#menu>ul>li>a:hover{
+		background-color:lightgray;
+	}
+	#menu>ul>li>ol{
+		list-style:none;
+		padding:0px;
+		margin:0px;
+		position:relative;
+		z-index:5;
+		/* display:none; */
+	}
+	#menu>ul>li>ol>li{
+		border:1px solid white;
+		
+		box-sizing:border-box;
+		z-index:6;
+	
+	}
+	#menu>ul>li>ol>li>a{
+		text-align:center;
+		display:block;
+		background-color:gray;
+		color:white;
+		text-decoration:none;
+	}
+	#menu>ul>li>ol>li>a:hover{
+		background-color:lightgray;
+	}
+	#footer{
+		background-color:gray;
+	}
+	
+	#footer>div{
+		width:300px;
+		margin:50px auto;
+	}
+	#car{
+		width:400px;
+		margin:0px auto;
+		z-index:1;
+	} 
+	#car img{
+		z-index:2;
+	}
+	
+	#content table,#content th,#content td{
+		border-collapse:collapse;
+		border:1px solid gray;
+	}
+	#content table{
+		width:500px;
+		margin:0px auto;
+	}
+	#content table>tr{}
+	#content table>tr>th{}
+	#content table>tr>td{}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+	var big,menu1,menu2,menu3,menu4;
+	var mn3_1,mn3_2;
+	$(document).ready(function(){
+		menu3=$('#menu>ul>li').eq(2);
+		mn3_1=menu3.find('a').eq(1);
+		mn3_2=menu3.find('a').eq(2);
+		
+		mn3_2.click(function(){
+			$('#content').html('<h1>dept list</h1><table><tr><th>deptno</th><th>dname</th><th>loc</th></tr></table>');
+			getDeptList();
+			$('#content').slideUp();
+			return false;
+		});
+		
+		$('#menu>ul>li>ol').slideUp();
+		
+		$('#menu>ul>li').eq(2).on('mouseenter',function(){
+			$('#menu>ul>li>ol').stop().slideDown();
+		});
+		$('#menu>ul>li').eq(2).on('mouseleave',function(){
+			$('#menu>ul>li>ol').stop().slideUp();
+		});
+		big=$("#big>ul").bxSlider({
+			slideWidth:320,
+			pager:false,
+			controls:false,
+			'mode':'vertical'
+		});
+		$("#small>ul").bxSlider({
+			slideWidth:100,
+			minSlides:3,
+			maxSlides:3,
+			'moveSlides':1,
+			'auto':true,
+			'onSlideBefore':function(a,b,c){
+				big.goToSlide(c);
+			}
+		});
+	});
+	
+	function getDeptList(){
+		$.get('deptlist.bit',function(data){
+			data.students.forEach(function(ele,idx){
+				$('table').append('<tr><td>'+ele.deptno+'</td><td>'+ele.dname+'</td><td>'+ele.loc+'</td></tr>');
+				$('#content').slideDown();
+			});
+		});
+	}
+</script>
+</head>
+<body>
+	<div>
+		<div id="header">
+			<h1>비트교육센터</h1>
+			<form>
+				<div>
+					<label for="id">id</label>
+					<input type="text" id="id"/>
+				</div>
+				<div>
+					<label for="pw">pw</label>
+					<input type="password" id="pw"/>
+				</div>
+				<div>
+					<button type="submit">로그인</button>
+					<button type="button">회원가입</button>
+				</div>
+			</form>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Intro</a></li>
+				<li>
+					<a href="#">B B S</a>
+					<ol>
+						<li><a href="#">E M P</a></li>
+						<li><a href="#">DEPT</a></li>
+					</ol>
+				</li>
+				<li><a href="#">E T C</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<div id="car">
+				<div id="big">
+					<ul>
+						<li><img alt="" src="img/img01.jpg"></li>
+						<li><img alt="" src="img/img02.jpg"></li>
+						<li><img alt="" src="img/img03.jpg"></li>
+						<li><img alt="" src="img/img04.jpg"></li>
+						<li><img alt="" src="img/img05.jpg"></li>
+						<li><img alt="" src="img/img06.jpg"></li>
+					</ul>
+				
+				</div>			
+				<div id="small">
+					<ul>
+						<li><img alt="" src="img/small01.jpg"></li>
+						<li><img alt="" src="img/small02.jpg"></li>
+						<li><img alt="" src="img/small03.jpg"></li>
+						<li><img alt="" src="img/small04.jpg"></li>
+						<li><img alt="" src="img/small05.jpg"></li>
+						<li><img alt="" src="img/small06.jpg"></li>
+					</ul>
+				</div>			
+			</div>
+		
+		</div>
+		<div id="footer">
+			<div>
+			
+			<address>비트캠프 서울시 서초구 강남대로 459</address>
+			(주)비트컴퓨터 서초본원<br/>
+	Copyright &copy; 비트캠프 All rights reserved. <br/>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
