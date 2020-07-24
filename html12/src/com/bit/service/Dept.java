@@ -22,6 +22,7 @@ public class Dept extends HttpServlet {
 		 *  
 		 * {"key":[{{"key1":"val1","key2":"val2"},{"key1":"val3","key2":"val4"}}]}
 		 */
+		
 		DeptDao dao=new DeptDao();
 		try {
 			List<DeptDto> list=dao.getList();
@@ -44,8 +45,6 @@ public class Dept extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-	
 	
 	}
 }

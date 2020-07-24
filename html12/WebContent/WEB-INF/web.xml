@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
   <servlet>
 	<servlet-name>ex04</servlet-name>
 	<servlet-class>com.bit.service.Ex04</servlet-class>
@@ -22,4 +23,44 @@
   	<url-pattern>/deptlist.bit</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+  	<servlet-name>empListXml</servlet-name>
+  	<servlet-class>com.bit.service.EmpList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empListXml</servlet-name>
+  	<url-pattern>/emplist.bit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>empAdd</servlet-name>
+  	<servlet-class>com.bit.service.EmpAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empAdd</servlet-name>
+  	<url-pattern>/empadd.bit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>empOneXml</servlet-name>
+  	<servlet-class>com.bit.service.EmpOne</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>empOneXml</servlet-name>
+  	<url-pattern>/empdetail.bit</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
 </web-app>
+
+
+
+
+
+
+
+
+

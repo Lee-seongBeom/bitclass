@@ -10,9 +10,9 @@
 }
 #header>form{
 	position:relative;
-	top:-200px;
+	top:-100px;
 	
-	width:700px;
+	width:600px;
 	float:right;
 }
 #header>form>div{

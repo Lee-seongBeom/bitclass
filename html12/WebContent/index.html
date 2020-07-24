@@ -83,28 +83,255 @@
 		border-collapse:collapse;
 		border:1px solid gray;
 	}
+	
 	#content table{
 		width:500px;
 		margin:0px auto;
 	}
+	
 	#content table>tr{}
 	#content table>tr>th{}
 	#content table>tr>td{}
+	
+	#content table+a{
+		display:inline-block;
+		margin:50px auto;
+		width: 200px;
+		height: 50px;
+		background-color: green;
+		border-radius:25px;
+		color: white;
+		text-align: center;
+		line-height:50px;
+		text-decoration: none;
+	}
+	
+	#empForm,#deptform{
+		position:absolute;
+		top:0px;
+		left:0px;
+		width:100%;
+		height:100%;
+		background-color:rgb(100,100,100,0.5);
+	}
+	#empForm>h2,#deptform>h2{
+		margin:200px auto 0px auto;
+		padding:50px;
+		width:500px;
+		background-color:white;
+		text-align:center;
+	}
+	#empForm>form,#deptform>form{
+	
+		background-color:white;
+		margin:0px auto;
+		
+		width:600px;
+		
+	}
+	#empForm>form>div,#deptform>form>div{
+		width:600px;
+		margin-bottom:30px;
+	}
+	#empForm>form>div>label,#deptform>form>div>label{
+		display:inline-block;
+		width:200px;
+		text-align: right;
+	}
+	#empForm>form>div>input,#deptform>form>div>input{
+		width:300px;
+	}
+	#empForm>form>div:last-child,#deptform>form>div:last-child{
+		text-align:center;
+	}
+	#empForm>form>div>button,#deptform>form>div>button{
+		width:200px;
+		margin-bottom:20px;
+	}
+	
+	#empForm>form>div>label+span,#deptform>form>div>label+span{
+		
+		display:inline-block;
+		text-align:center;
+		width:300px;
+	}
+	
+	
+	
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
+	
+	function getDeptList(){
+		$.get('deptlist.bit',function(data){
+			data.students.forEach(function(ele,idx){
+				$('table').append('<tr><td>'+ele.deptno+'</td><td>'+ele.dname+'</td><td>'+ele.loc+'</td></tr>');
+				$('#content').delay(50).slideDown(300);
+			});
+		});
+	}
+	
+	function empList(){
+		$('#content').html('<h1 align="center">EmpList</h1><table/><a href="#">입력</a>');
+		
+		$('<tr/>').append('<th>empno</th>')
+		.append('<th>ename</th>')
+		.append('<th>job</th>')
+		.append('<th>deptno</th>')
+		.appendTo('table');
+
+		$.get('emplist.bit',function(data){
+			$(data).find('emp').each(function(){
+					$('<tr/>').append('<td>'+$(this).children().eq(0).text()+'</td>')
+					.append('<td>'+$(this).children().eq(1).text()+'</td>')
+					.append('<td>'+$(this).children().eq(2).text()+'</td>')
+					.append('<td>'+$(this).children().eq(3).text()+'</td>')
+					.appendTo('table');
+			});
+		});
+		
+		// 입력버튼
+		$('#content a').click(function(){
+			addshow();			
+			$('#empForm').show();
+			return false;
+		});
+	}
+	
+	function addshow(){
+		$('#empForm>h2').text('입력 페이지');
+		$('#empForm>form>div').eq(4).hide();
+		$('#empForm>form>div').eq(5).hide();
+		$('#empForm>form>div').eq(6).hide();
+		$('#empForm>form>div').eq(7).hide();
+	}
+	
+	function editshow(){
+		$('#empForm>h2').text('상세 페이지');
+		$('#empForm>form>div').eq(4).show();
+		$('#empForm>form>div').eq(5).show();
+		$('#empForm>form>div').eq(6).show();
+		$('#empForm>form>div').eq(7).show();
+	}
+	
 	var big,menu1,menu2,menu3,menu4;
-	var mn3_1,mn3_2;
+	var mn3_1,mn3_2,temp;
+	
 	$(document).ready(function(){
+		$('#deptform').hide();
+		
+		$(document).on('click','#content>table tr',function(){
+			if($(this).parent().parent().prev().text()=="dept list"){
+
+				console.log($(this).children().first().text());
+				var obj={"idx":$(this).children().first().text()};
+				console.log(obj,$.param(obj));// 양쪽 두개가 같은 의미
+				$.getJSON('deptdetail.bit',obj,function(data){
+					console.log(data);
+					$('#deptform').find('input').eq(0).val(data.dept[0].deptno);
+					$('#deptform').find('input').eq(1).val(data.dept[0].dname);
+					$('#deptform').find('input').eq(2).val(data.dept[0].loc);
+					$('#deptform').show();
+				});
+				/* 제이슨 불러오는거와 같음
+				$.ajax({
+					dataType:"json",
+					url: url,
+					data:data,
+					success:success
+				})
+				*/
+			}
+			if($(this).parent().parent().prev().text()=="EmpList"){
+			
+				$('.detail').remove();
+			
+				var param= 'idx='+$(this).children().first().text();
+				//console.log(param);
+				$.get('empdetail.bit',param,function(data){
+					editshow();
+					$('#empForm').show();
+					$('#empno').val($(data).find('empno').text());
+					$('#ename').val($(data).find('ename').text());
+					$('#job').val($(data).find('job').text());
+					$('#hiredate').val($(data).find('hiredate').text());
+					$('#comm').val($(data).find('comm').text());
+					$('#sal').val($(data).find('sal').text());
+					$('#mgr').val($(data).find('mgr').text());
+				
+					$('#deptno').children().each(function(){
+						if($(this).val()==$(data).find('deptno').text()){
+							$(this).prop('selected',true);
+						}
+					});
+				
+
+					$('#empForm>form>div>label').each(function(e){
+					
+						$(this).next().hide();
+						var msg= $(this).next().val();
+						$(this).after('<span class="detail">'+msg+'</span>');
+					});
+				});
+			
+			
+			}
+		});
+		
+		
+		$('#empForm>form').submit(function(){
+			console.log($(this).serialize());
+			if($('#empForm>h2').text()=="입력 페이지"){
+				$.post('empadd.bit',$(this).serialize(),function(){
+					$('#empForm').click();
+					empList();
+				});
+			}else if($('#empForm>h2').text()=="상세 페이지"){
+				$('.detail').remove();
+				$('#empForm>h2').text("수정 페이지");
+				$(this).find('label').next().show();
+				
+			}else if($('#empForm>h2').text()=="수정 페이지"){
+				// 수정기능
+				/* 
+				$.post('수정서블릿','쿼리스트링',function(){
+					
+				});
+				*/
+				console.log('수정완료');
+				$('#empForm').click();
+				empList();
+			}
+			return false;
+		});
+		$('#empForm').hide().click(function(e){
+			e.stopPropagation();
+			$(this).hide();
+		});
+		$('#empForm>h2,#empForm>form').click(function(e){
+			e.stopPropagation();
+		});
 		menu3=$('#menu>ul>li').eq(2);
 		mn3_1=menu3.find('a').eq(1);
 		mn3_2=menu3.find('a').eq(2);
 		
+		mn3_1.click(function(){
+			$('#content').delay(50).slideUp(300,function(){
+				$('#content').delay(50).slideDown(300);
+				empList();
+			});
+			return false;
+		});
+		
 		mn3_2.click(function(){
-			$('#content').html('<h1>dept list</h1><table><tr><th>deptno</th><th>dname</th><th>loc</th></tr></table>');
-			getDeptList();
-			$('#content').slideUp();
+			$('#content').delay(50).slideUp(300,function(){
+				$('#content').html('<h1 align="center">dept list</h1><table><tr><th>deptno</th><th>dname</th><th>loc</th></tr></table><a href="#">입력</a>');
+				getDeptList();
+				$('#content a').click(function(){
+					alert('입력');
+				});
+			})
 			return false;
 		});
 		
@@ -134,18 +361,11 @@
 		});
 	});
 	
-	function getDeptList(){
-		$.get('deptlist.bit',function(data){
-			data.students.forEach(function(ele,idx){
-				$('table').append('<tr><td>'+ele.deptno+'</td><td>'+ele.dname+'</td><td>'+ele.loc+'</td></tr>');
-				$('#content').slideDown();
-			});
-		});
-	}
 </script>
 </head>
 <body>
 	<div>
+	
 		<div id="header">
 			<h1>비트교육센터</h1>
 			<form>
@@ -163,6 +383,7 @@
 				</div>
 			</form>
 		</div>
+		
 		<div id="menu">
 			<ul>
 				<li><a href="#">Home</a></li>
@@ -177,6 +398,7 @@
 				<li><a href="#">E T C</a></li>
 			</ul>
 		</div>
+		
 		<div id="content">
 			<div id="car">
 				<div id="big">
@@ -201,8 +423,8 @@
 					</ul>
 				</div>			
 			</div>
-		
 		</div>
+		
 		<div id="footer">
 			<div>
 			
@@ -213,5 +435,89 @@
 			</div>
 		</div>
 	</div>
+	<div id="empForm">
+		<h2>입력 페이지</h2>
+		<form>
+			<div>
+				<label for="empno">empno</label>
+				<input type="text" id="empno" name="empno"/>
+			</div>
+			
+			<div>
+				<label for="ename">ename</label>
+				<input type="text" id="ename" name="ename"/>
+			</div>
+			
+			<div>
+				<label for="job">job</label>
+				<input type="text" id="job" name="job"/>
+			</div>
+			
+			<div>
+				<label for="deptno">deptno</label>
+				<select name="deptno" id="deptno">
+					<option value="10">accounting</option>
+					<option value="20">research</option>
+					<option value="30">sales</option>
+					<option value="40">operations</option>
+				</select>
+			</div>
+			
+			<div>
+				<label for="mgr">mgr</label>
+				<input type="text" id="mgr" name="mgr"/>
+			</div>
+			
+			<div>
+				<label for="hiredate">hiredate</label>
+				<input type="text" id="hiredate" name="hiredate"/>
+			</div>
+			
+			<div>
+				<label for="sal">sal</label>
+				<input type="text" id="sal" name="sal"/>
+			</div>
+			
+			<div>
+				<label for="comm">comm</label>
+				<input type="text" id="comm" name="comm"/>
+			</div>
+			
+			<div>
+				<button type="submit">입력</button>
+				<button type="reset">취소</button>
+			</div>
+		</form>
+	</div>
+	<div id="deptform">
+		<h2>상세페이지</h2>
+		<form>
+			<div>
+				<label for="deptno2">deptno</label>
+				<input type="text" id="deptno2" name="deptno2"/>
+			</div>
+			<div>
+				<label for="dname">dname</label>
+				<input type="text" id="dname" name="dname"/>
+			</div>
+			<div>
+				<label for="loc">loc</label>
+				<input type="text" id="loc" name="loc"/>
+			</div>
+			<div>
+				<button type="submit">입력</button>
+				<button type="reset">취소</button>
+			</div>
+		</form>
+	
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
